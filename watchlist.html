@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iMybook - Watchlist Management</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <h2>iMybook App</h2>
+    <ul>
+      <li><a href="index.html">Discover & Calculate</a></li>
+      <li><a href="watchlist.html" class="active">My Reading Watchlist / Plan</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <section class="card">
+      <h3 id="formTitle">Add Custom Book / Reading Plan Record</h3>
+      <form id="crudForm">
+        <input type="hidden" id="recordId">
+        <div class="form-grid">
+          <div>
+            <label for="bookTitle">Book Title *</label>
+            <input type="text" id="bookTitle" required placeholder="e.g. Design Patterns">
+          </div>
+          <div>
+            <label for="bookAuthor">Author *</label>
+            <input type="text" id="bookAuthor" required placeholder="e.g. Erich Gamma">
+          </div>
+          <div>
+            <label for="bookPages">Page Count *</label>
+            <input type="number" id="bookPages" required min="1" placeholder="e.g. 395">
+          </div>
+          <div>
+            <label for="bookCategory">Category/Genre</label>
+            <input type="text" id="bookCategory" placeholder="e.g. Software Engineering">
+          </div>
+          <div>
+            <label for="bookStatus">Reading Status</label>
+            <select id="bookStatus">
+              <option value="Plan to Read">Plan to Read</option>
+              <option value="Currently Reading">Currently Reading</option>
+              <option value="Completed">Completed</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-top: 15px;">
+          <button type="submit" id="saveRecordBtn" class="btn btn-success">Save Record to Local Storage</button>
+          <button type="button" id="cancelEditBtn" class="btn btn-secondary" style="display:none;">Cancel Edit</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card stats-card">
+      <h3>📊 Reading Analytics & Summary</h3>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <span id="statTotalBooks" class="stat-number">0</span>
+          <span class="stat-label">Total Books</span>
+        </div>
+        <div class="stat-box">
+          <span id="statTotalPages" class="stat-number">0</span>
+          <span class="stat-label">Total Pages</span>
+        </div>
+        <div class="stat-box">
+          <span id="statCompleted" class="stat-number">0</span>
+          <span class="stat-label">Completed Books</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Saved Local Watchlist Records</h3>
+      <div id="crudStatus" class="status-msg"></div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Pages</th>
+            <th>Category</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="watchlistTableBody">
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="watchlist.js"></script>
+</body>
+</html>

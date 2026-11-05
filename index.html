@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iMybook - Discovery & Calculations</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <h2>iMybook App</h2>
+    <ul>
+      <li><a href="index.html" class="active">Discover & Calculate</a></li>
+      <li><a href="watchlist.html">My Reading Watchlist / Plan</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <section class="card">
+      <h3>1. Search & Discover Books</h3>
+      <div class="form-group">
+        <input type="text" id="searchInput" placeholder="Enter book title or keyword (e.g., JavaScript, Fiction)">
+        <button id="searchBtn" class="btn">Search using OpenLibrary API</button>
+      </div>
+      <div id="statusMessage" class="status-msg"></div>
+      <div id="apiResults" class="grid-container"></div>
+    </section>
+
+    <section class="card">
+      <h3>2. Smart Book Suggestion</h3>
+      <div class="form-inline">
+        <label for="genreSelect">Select Preferred Genre:</label>
+        <select id="genreSelect">
+          <option value="">-- Choose Genre --</option>
+          <option value="programming">Programming & Technology</option>
+          <option value="fiction">Fiction & Novels</option>
+          <option value="history">History & World Events</option>
+          <option value="science">Science & Nature</option>
+        </select>
+
+        <label for="pagesInput">Target Max Pages:</label>
+        <input type="number" id="pagesInput" placeholder="e.g. 300" min="10">
+
+        <button id="suggestBtn" class="btn btn-secondary">Get a Personalized Suggestion</button>
+      </div>
+      <div id="suggestionResult" class="result-box"></div>
+    </section>
+
+    <section class="card">
+      <h3>3. Reading Pace & Completion Calculator</h3>
+      <form id="calcForm" class="calc-form-layout">
+        
+        <div class="form-group-vertical">
+          <label for="calcPages">Total Book Pages:</label>
+          <input type="number" id="calcPages" placeholder="e.g., 400" required min="1">
+          <small class="helper-text">How many total pages are in the book?</small>
+        </div>
+
+        <div class="form-group-vertical">
+          <label for="calcMinPerDay">Daily Reading Minutes:</label>
+          <input type="number" id="calcMinPerDay" placeholder="e.g., 30" required min="1">
+          <small class="helper-text">How many minutes do you spend reading each day?</small>
+        </div>
+
+        <div class="form-group-vertical">
+          <label for="calcPPM">Reading Speed (Pages/Min):</label>
+          <input type="number" id="calcPPM" placeholder="e.g., 0.8" step="0.1" value="0.7" required min="0.1">
+          <small class="helper-text">Average speed (typically 0.5 to 1.5 pages per minute)</small>
+        </div>
+
+        <button type="submit" class="btn btn-success">Calculate Completion Plan</button>
+      </form>
+      <div id="calcResult" class="result-box"></div>
+    </section>
+  </main>
+
+  <script src="index.js"></script>
+</body>
+</html>
